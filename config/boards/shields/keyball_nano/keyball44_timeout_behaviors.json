@@ -1,0 +1,20 @@
+{
+  "behaviors": {
+    "pmw_timeout_1000": {
+      "display_name": "PMW Timeout 1s",
+      "description": "Set auto mouse timeout to 1 second",
+      "category": "Custom/PMW3610"
+    },
+    "pmw_timeout_2000": {
+      "display_name": "PMW Timeout 2s", 
+      "description": "Set auto mouse timeout to 2 seconds",
+      "category": "Custom/PMW3610"
+    },
+    "pmw_timeout_5000": {
+      "display_name": "PMW Timeout 5s",
+      "description": "Set auto mouse timeout to 5 seconds", 
+      "category": "Custom/PMW3610"
+    }
+  }
+}
+
