@@ -10,7 +10,6 @@
 #include <drivers/behavior.h>
 #include <zephyr/logging/log.h>
 #include <zmk/behavior.h>
-#include <zmk/endpoints.h>
 
 #include "pmw3610.h"
 
@@ -59,13 +58,15 @@ static int behavior_pmw_timeout_init(const struct device *dev) {
     return 0;
 }
 
-#define PMW_TIMEOUT_INST(n)                                                                        \
-    static const struct behavior_pmw_timeout_config behavior_pmw_timeout_config_##n = {           \
-        .timeout_ms = DT_INST_PROP(n, timeout_ms),                                                 \
-    };                                                                                             \
-    BEHAVIOR_DT_INST_DEFINE(n, behavior_pmw_timeout_init, NULL, NULL,                             \
-                            &behavior_pmw_timeout_config_##n, POST_KERNEL,                         \
-                            CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_pmw_timeout_driver_api);
+#define PMW_TIMEOUT_INST(inst)                                                      \
+    static const struct behavior_pmw_timeout_config                                 \
+        behavior_pmw_timeout_config_##inst = {                                      \
+            .timeout_ms = DT_INST_PROP(inst, timeout_ms),                           \
+    };                                                                              \
+    BEHAVIOR_DT_INST_DEFINE(inst, behavior_pmw_timeout_init, NULL, NULL,            \
+                            &behavior_pmw_timeout_config_##inst, POST_KERNEL,       \
+                            CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,                    \
+                            &behavior_pmw_timeout_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(PMW_TIMEOUT_INST)
 
