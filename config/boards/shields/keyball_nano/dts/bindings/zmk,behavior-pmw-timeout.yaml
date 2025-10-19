@@ -9,6 +9,10 @@ properties:
   "#binding-cells":
     type: int
     const: 0
+  
+  label:
+    type: string
+    description: Human readable label for the behavior
     
   timeout-ms:
     type: int
