@@ -12,9 +12,11 @@
 #include <zmk/behavior.h>
 #include <zephyr/sys/util.h>
 
-#include <pmw3610.h>
-
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
+
+// Forward declarations from pmw3610 driver
+extern uint32_t pmw3610_get_automouse_timeout_ms(const struct device *dev);
+extern int pmw3610_set_automouse_timeout_ms(const struct device *dev, uint32_t timeout_ms);
 
 struct behavior_pmw_timeout_config {
     uint32_t timeout_ms;
