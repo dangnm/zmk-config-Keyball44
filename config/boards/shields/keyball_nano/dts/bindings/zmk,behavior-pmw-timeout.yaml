@@ -5,9 +5,11 @@ description: PMW3610 Auto Mouse Timeout Control Behavior
 
 compatible: "zmk,behavior-pmw-timeout"
 
-include: behavior-1param-less.yaml
-
 properties:
+  "#binding-cells":
+    type: int
+    const: 0
+    
   timeout-ms:
     type: int
     required: true
