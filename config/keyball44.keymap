@@ -12,7 +12,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
-#include "boards/shields/keyball_nano/behavior_pmw_timeout.dtsi"
 
 &lt {
     tapping-term-ms = <240>;
@@ -48,6 +47,27 @@
             bindings = <&kp DOT>, <&kp SEMI>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        pmw_timeout_1000: pmw_timeout_1000 {
+            compatible = "zmk,behavior-pmw-timeout";
+            label = "PMW_TIMEOUT_1S";
+            #binding-cells = <0>;
+            timeout-ms = <1000>;
+        };
+
+        pmw_timeout_2000: pmw_timeout_2000 {
+            compatible = "zmk,behavior-pmw-timeout";
+            label = "PMW_TIMEOUT_2S";
+            #binding-cells = <0>;
+            timeout-ms = <2000>;
+        };
+
+        pmw_timeout_5000: pmw_timeout_5000 {
+            compatible = "zmk,behavior-pmw-timeout";
+            label = "PMW_TIMEOUT_5S";
+            #binding-cells = <0>;
+            timeout-ms = <5000>;
         };
     };
 

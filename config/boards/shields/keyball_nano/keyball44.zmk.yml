@@ -11,16 +11,3 @@ features:
 siblings:
   - keyball44_left
   - keyball44_right
-behaviors:
-  pmw_timeout_1000:
-    display_name: PMW Timeout 1s
-    description: Set auto mouse layer timeout to 1 second (1000ms)
-    binding_cells: 0
-  pmw_timeout_2000:
-    display_name: PMW Timeout 2s
-    description: Set auto mouse layer timeout to 2 seconds (2000ms)
-    binding_cells: 0
-  pmw_timeout_5000:
-    display_name: PMW Timeout 5s
-    description: Set auto mouse layer timeout to 5 seconds (5000ms)
-    binding_cells: 0
