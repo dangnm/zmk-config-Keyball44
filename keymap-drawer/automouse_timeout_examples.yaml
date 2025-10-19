@@ -1,0 +1,16 @@
+layout: {zmk_keyboard: automouse_timeout_examples}
+layers:
+  browsing: ['&amto 1500 ...']
+  design: ['&amto 400 ...']
+  gaming: ['&amto 200 ...']
+combos:
+- p: [1, 2]
+  k: '&amto (-1)'
+  l: [browsing]
+- p: [2, 3]
+  k: '&amto (-2)'
+  l: [browsing]
+- p: [10, 11]
+  k: '&amto 1000'
+- p: [20, 21]
+  k: '&amto (-3)'
