@@ -1,0 +1,216 @@
+/*
+ * PMW3610 Automouse Timeout Behavior - Usage Examples
+ * 
+ * This file demonstrates various ways to use the &amto behavior
+ * to control the automouse layer timeout at runtime.
+ */
+
+// ============================================================================
+// EXAMPLE 1: Basic Layer with Timeout Controls
+// ============================================================================
+
+settings_layer {
+    label = "SETTINGS";
+    bindings = <
+// Row 1: Preset timeout values
+&amto 300   &amto 500   &amto 750   &amto 1000  &amto 1500  &amto 2000   ...
+
+// Row 2: Fine-tune controls  
+&trans      &amto (-1)  &trans      &amto (-2)  &trans      &amto (-3)   ...
+//          Decrease              Increase              Reset to default
+
+// Row 3: Context-specific presets
+&trans      &amto 400   &amto 800   &amto 1200  &trans      &trans       ...
+//          Precision   Normal      Relaxed
+    >;
+};
+
+// ============================================================================
+// EXAMPLE 2: Using Combos for Quick Timeout Changes
+// ============================================================================
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        
+        // Quick timeout decrease
+        combo_timeout_dec {
+            timeout-ms = <50>;
+            key-positions = <1 2>;  // Adjust to your layout
+            bindings = <&amto (-1)>;
+            layers = <0>;  // Available on default layer
+        };
+        
+        // Quick timeout increase
+        combo_timeout_inc {
+            timeout-ms = <50>;
+            key-positions = <2 3>;  // Adjust to your layout
+            bindings = <&amto (-2)>;
+            layers = <0>;
+        };
+        
+        // Quick preset: 1 second
+        combo_timeout_1sec {
+            timeout-ms = <50>;
+            key-positions = <10 11>;
+            bindings = <&amto 1000>;
+        };
+        
+        // Quick reset to default
+        combo_timeout_reset {
+            timeout-ms = <50>;
+            key-positions = <20 21>;
+            bindings = <&amto (-3)>;
+        };
+    };
+};
+
+// ============================================================================
+// EXAMPLE 3: Context-Aware Timeout Switching
+// ============================================================================
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+        
+        // Browsing layer - longer timeout for comfort
+        browsing_layer {
+            bindings = <
+&amto 1500  ...  // Set longer timeout when entering browsing
+            >;
+        };
+        
+        // Design/precision layer - shorter timeout
+        design_layer {
+            bindings = <
+&amto 400   ...  // Set short timeout for precision work
+            >;
+        };
+        
+        // Gaming layer - very short timeout for responsiveness
+        gaming_layer {
+            bindings = <
+&amto 200   ...  // Ultra-short timeout for gaming
+            >;
+        };
+    };
+};
+
+// ============================================================================
+// EXAMPLE 4: Macro with Timeout Change
+// ============================================================================
+
+/ {
+    macros {
+        // Macro that sets timeout and switches to a layer
+        precision_mode: precision_mode {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&amto 300>         // Set short timeout
+                , <&to 5>             // Switch to precision layer
+                ;
+        };
+        
+        // Macro that resets timeout and returns to default
+        normal_mode: normal_mode {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&amto (-3)>        // Reset to default timeout
+                , <&to 0>             // Return to default layer
+                ;
+        };
+    };
+};
+
+// ============================================================================
+// EXAMPLE 5: Timeout Control Integrated with Mouse Layer
+// ============================================================================
+
+mouse_layer {
+    label = "MOUSE";
+    bindings = <
+// Top row: Quick timeout presets
+&amto 500   &amto 1000  &amto 1500  &trans      &trans      &trans       &trans      &trans      &trans      &trans      &trans      &to 0
+
+// Middle row: Mouse controls with timeout adjust nearby
+&trans      &trans      &trans      &trans      &trans      &trans       &mkp LCLK   &mkp MCLK   &mkp RCLK   &amto (-1)  &amto (-2)  &trans
+
+// Bottom row: Scroll controls
+&trans      &trans      &trans      &trans      &trans      &trans       &msc SCRL_UP &msc SCRL_DOWN &trans  &trans      &trans      &trans
+
+// Thumb cluster: Common timeout controls
+&amto 1000  &amto (-2)  &amto (-1)  &trans                                &trans      &trans
+    >;
+};
+
+// ============================================================================
+// EXAMPLE 6: Hold-Tap Behavior with Timeout Control
+// ============================================================================
+
+/ {
+    behaviors {
+        // Hold: decrease timeout, Tap: normal key
+        ht_timeout_dec: ht_timeout_dec {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&amto>, <&kp>;
+        };
+    };
+};
+
+// Usage: &ht_timeout_dec (-1) ESC
+// Tap for ESC, hold to decrease timeout
+
+// ============================================================================
+// EXAMPLE 7: Layer-Specific Increment/Decrement Steps
+// ============================================================================
+
+// You can configure different step sizes in different behavior instances
+/ {
+    behaviors {
+        // Fine adjustment - 50ms steps
+        amto_fine: behavior_pmw3610_automouse_timeout_fine {
+            compatible = "zmk,behavior-pmw3610-automouse-timeout";
+            #binding-cells = <1>;
+            min-timeout-ms = <100>;
+            max-timeout-ms = <5000>;
+            step-ms = <50>;  // Smaller steps for fine control
+        };
+        
+        // Coarse adjustment - 250ms steps
+        amto_coarse: behavior_pmw3610_automouse_timeout_coarse {
+            compatible = "zmk,behavior-pmw3610-automouse-timeout";
+            #binding-cells = <1>;
+            min-timeout-ms = <100>;
+            max-timeout-ms = <5000>;
+            step-ms = <250>;  // Larger steps for quick changes
+        };
+    };
+};
+
+// Usage:
+// &amto_fine (-1)    // Decrease by 50ms
+// &amto_coarse (-2)  // Increase by 250ms
+
+// ============================================================================
+// RECOMMENDED PRESETS
+// ============================================================================
+
+/*
+Recommended timeout values for different use cases:
+
+&amto 200   - Ultra-responsive (gaming, fast navigation)
+&amto 400   - Precision work (graphic design, CAD)
+&amto 600   - Default balanced (general use)
+&amto 1000  - Comfortable (casual browsing, reading)
+&amto 1500  - Relaxed (media consumption, presentations)
+&amto 2000  - Extended (when you want mouse to stay active longer)
+
+Remember: Lower timeout = mouse layer deactivates faster = more responsive
+          Higher timeout = mouse layer stays active longer = more comfortable
+*/
+

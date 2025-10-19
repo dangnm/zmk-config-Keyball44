@@ -1,0 +1,19 @@
+/*
+ * Copyright (c) 2025 ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/ {
+    behaviors {
+        amto: behavior_pmw3610_automouse_timeout {
+            compatible = "zmk,behavior-pmw3610-automouse-timeout";
+            #binding-cells = <1>;
+            display-name = "Auto Mouse Timeout";
+            min-timeout-ms = <100>;
+            max-timeout-ms = <5000>;
+            step-ms = <100>;
+        };
+    };
+};
+
