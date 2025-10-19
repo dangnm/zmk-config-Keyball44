@@ -1,0 +1,39 @@
+# Copyright (c) 2025 ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: |
+  Behavior for adjusting PMW3610 automouse layer timeout at runtime.
+  
+  This behavior allows dynamic adjustment of how long the automouse layer
+  stays active after trackball movement without recompiling firmware.
+  
+  Parameter values:
+    - Positive number: Set absolute timeout in milliseconds
+    - 0: Query current value (no change)
+    - -1: Decrease timeout by step
+    - -2: Increase timeout by step
+    - -3: Reset to default from Kconfig
+
+compatible: "zmk,behavior-pmw3610-automouse-timeout"
+
+include: behavior_base.yaml
+
+properties:
+  min-timeout-ms:
+    type: int
+    default: 100
+    description: Minimum allowed timeout value in milliseconds
+
+  max-timeout-ms:
+    type: int
+    default: 5000
+    description: Maximum allowed timeout value in milliseconds
+
+  step-ms:
+    type: int
+    default: 100
+    description: Step size for increment/decrement operations in milliseconds
+
+  "#binding-cells":
+    const: 1
+

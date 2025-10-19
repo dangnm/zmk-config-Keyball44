@@ -28,11 +28,16 @@ zmk-config-Keyball44/
 │   │
 │   ├── 🆕 CMakeLists.txt                     [NEW] - Build configuration
 │   ├── 🆕 pmw3610_automouse_timeout.c        [NEW] - Behavior implementation
-│   ├── 🆕 pmw3610_automouse_timeout.dtsi     [NEW] - Device tree binding
+│   ├── 🆕 pmw3610_automouse_timeout.dtsi     [NEW] - Device tree node
 │   ├── 🆕 AUTOMOUSE_TIMEOUT_BEHAVIOR.md      [NEW] - Full documentation
 │   ├── 🆕 automouse_timeout_examples.keymap  [NEW] - Usage examples
 │   ├── 🆕 QUICK_REFERENCE.md                 [NEW] - Quick reference
 │   ├── 🆕 IMPLEMENTATION_SUMMARY.md          [NEW] - Technical details
+│   │
+│   ├── dts/
+│   │   └── bindings/
+│   │       └── behavior/
+│   │           └── 🆕 zmk,behavior-pmw3610-automouse-timeout.yaml  [NEW] - Binding schema
 │   │
 │   └── boards/
 │       └── shields/
@@ -54,7 +59,7 @@ zmk-config-Keyball44/
 
 ## Summary Statistics
 
-### Files Created: 13
+### Files Created: 14
 
 #### Root Directory (5 new)
 1. ✅ `CHANGELOG.md` - Version history and release notes
@@ -63,14 +68,15 @@ zmk-config-Keyball44/
 4. ✅ `IMPLEMENTATION_COMPLETE.md` - Implementation completion summary
 5. ✅ `FILES_CREATED.md` - This file (file inventory)
 
-#### config/ Directory (7 new)
+#### config/ Directory (8 new)
 6. ✅ `CMakeLists.txt` - Build system integration
 7. ✅ `pmw3610_automouse_timeout.c` - Core behavior implementation (~140 lines)
 8. ✅ `pmw3610_automouse_timeout.dtsi` - Device tree binding (~18 lines)
-9. ✅ `AUTOMOUSE_TIMEOUT_BEHAVIOR.md` - Complete user guide (~300 lines)
-10. ✅ `automouse_timeout_examples.keymap` - Usage examples (~230 lines)
-11. ✅ `QUICK_REFERENCE.md` - Quick reference card (~100 lines)
-12. ✅ `IMPLEMENTATION_SUMMARY.md` - Technical documentation (~400 lines)
+9. ✅ `dts/bindings/behavior/zmk,behavior-pmw3610-automouse-timeout.yaml` - Binding definition
+10. ✅ `AUTOMOUSE_TIMEOUT_BEHAVIOR.md` - Complete user guide (~300 lines)
+11. ✅ `automouse_timeout_examples.keymap` - Usage examples (~230 lines)
+12. ✅ `QUICK_REFERENCE.md` - Quick reference card (~100 lines)
+13. ✅ `IMPLEMENTATION_SUMMARY.md` - Technical documentation (~400 lines)
 
 ### Files Modified: 2
 
@@ -88,10 +94,11 @@ All other files remain unchanged and functional.
 | File | Lines | Purpose |
 |------|-------|---------|
 | `config/pmw3610_automouse_timeout.c` | ~140 | Behavior implementation in C |
-| `config/pmw3610_automouse_timeout.dtsi` | ~18 | Device tree binding definition |
+| `config/pmw3610_automouse_timeout.dtsi` | ~18 | Device tree node definition |
+| `config/dts/bindings/behavior/zmk,behavior-pmw3610-automouse-timeout.yaml` | ~35 | Binding schema definition |
 | `config/CMakeLists.txt` | ~5 | Build system configuration |
 
-**Total Implementation**: ~163 lines of code
+**Total Implementation**: ~198 lines of code
 
 ### 📚 Documentation Files (User Guides)
 
@@ -122,9 +129,9 @@ All other files remain unchanged and functional.
 
 | Category | Lines | Percentage |
 |----------|-------|------------|
-| Implementation Code | 163 | 7.4% |
-| Documentation | 2,050 | 92.6% |
-| **Total New Content** | **2,213** | **100%** |
+| Implementation Code | 198 | 8.8% |
+| Documentation | 2,050 | 91.2% |
+| **Total New Content** | **2,248** | **100%** |
 
 ## File Purposes Quick Reference
 
@@ -163,6 +170,7 @@ All other files remain unchanged and functional.
 |------|------|------|
 | `pmw3610_automouse_timeout.c` | ~5 KB | Code |
 | `pmw3610_automouse_timeout.dtsi` | ~1 KB | Config |
+| `dts/bindings/behavior/zmk,behavior-pmw3610-automouse-timeout.yaml` | ~1 KB | Config |
 | `CMakeLists.txt` | <1 KB | Config |
 | `AUTOMOUSE_TIMEOUT_BEHAVIOR.md` | ~15 KB | Docs |
 | `automouse_timeout_examples.keymap` | ~12 KB | Docs |
@@ -229,6 +237,7 @@ All other files remain unchanged and functional.
 config/CMakeLists.txt
 config/pmw3610_automouse_timeout.c
 config/pmw3610_automouse_timeout.dtsi
+config/dts/bindings/behavior/zmk,behavior-pmw3610-automouse-timeout.yaml
 config/keyball44.keymap
 ```
 

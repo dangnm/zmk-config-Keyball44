@@ -6,12 +6,13 @@ Successfully implemented a custom ZMK behavior for the Keyball44 that enables ru
 
 ## What Was Delivered
 
-### 🔧 Core Implementation (3 files)
+### 🔧 Core Implementation (4 files)
 
 | File | Purpose | Status |
 |------|---------|--------|
 | `config/pmw3610_automouse_timeout.c` | Behavior implementation | ✅ Complete |
-| `config/pmw3610_automouse_timeout.dtsi` | Device tree binding | ✅ Complete |
+| `config/pmw3610_automouse_timeout.dtsi` | Device tree node | ✅ Complete |
+| `config/dts/bindings/behavior/zmk,behavior-pmw3610-automouse-timeout.yaml` | Binding definition | ✅ Complete |
 | `config/CMakeLists.txt` | Build configuration | ✅ Complete |
 
 ### 📚 Documentation (7 files)

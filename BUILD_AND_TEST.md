@@ -241,6 +241,14 @@ ls -la config/pmw3610_automouse_timeout.dtsi
 grep "pmw3610_automouse_timeout.dtsi" config/keyball44.keymap
 ```
 
+**Issue:** Devicetree binding error ("lacks binding")
+```bash
+# Verify binding file exists
+ls -la config/dts/bindings/behavior/zmk,behavior-pmw3610-automouse-timeout.yaml
+
+# Should show the binding YAML file
+```
+
 ### Runtime Issues
 
 **Issue:** Device not found

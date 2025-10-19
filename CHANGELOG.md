@@ -15,7 +15,8 @@ A new custom ZMK behavior that allows dynamic adjustment of the automouse layer 
 
 **New Files:**
 - `config/pmw3610_automouse_timeout.c` - Behavior implementation
-- `config/pmw3610_automouse_timeout.dtsi` - Device tree binding definition
+- `config/pmw3610_automouse_timeout.dtsi` - Device tree node definition
+- `config/dts/bindings/behavior/zmk,behavior-pmw3610-automouse-timeout.yaml` - Binding schema
 - `config/CMakeLists.txt` - Build configuration
 - `config/AUTOMOUSE_TIMEOUT_BEHAVIOR.md` - Complete documentation
 - `config/automouse_timeout_examples.keymap` - Usage examples

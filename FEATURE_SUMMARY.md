@@ -11,7 +11,8 @@ This feature adds the ability to adjust the PMW3610 automouse layer timeout at r
 | File | Purpose | Lines |
 |------|---------|-------|
 | `config/pmw3610_automouse_timeout.c` | Behavior implementation in C | ~140 |
-| `config/pmw3610_automouse_timeout.dtsi` | Device tree binding definition | ~18 |
+| `config/pmw3610_automouse_timeout.dtsi` | Device tree node definition | ~18 |
+| `config/dts/bindings/behavior/zmk,behavior-pmw3610-automouse-timeout.yaml` | Binding schema definition | ~35 |
 | `config/CMakeLists.txt` | Build configuration | ~5 |
 
 ### Documentation Files
