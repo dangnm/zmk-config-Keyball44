@@ -10,8 +10,9 @@
 #include <drivers/behavior.h>
 #include <zephyr/logging/log.h>
 #include <zmk/behavior.h>
+#include <zephyr/sys/util.h>
 
-#include "pmw3610.h"
+#include <pmw3610.h>
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
