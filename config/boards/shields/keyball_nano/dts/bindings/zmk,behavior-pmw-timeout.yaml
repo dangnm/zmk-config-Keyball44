@@ -1,0 +1,15 @@
+# Copyright (c) 2025 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: PMW3610 Auto Mouse Timeout Control Behavior
+
+compatible: "zmk,behavior-pmw-timeout"
+
+include: behavior-1param-less.yaml
+
+properties:
+  timeout-ms:
+    type: int
+    required: true
+    description: The timeout value in milliseconds to set for auto mouse layer
+

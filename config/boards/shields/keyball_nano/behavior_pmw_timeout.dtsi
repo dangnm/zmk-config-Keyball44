@@ -1,0 +1,28 @@
+/*
+ * Copyright (c) 2025 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/ {
+    behaviors {
+        pmw_timeout_1000: pmw_timeout_1000 {
+            compatible = "zmk,behavior-pmw-timeout";
+            #binding-cells = <0>;
+            timeout-ms = <1000>;
+        };
+        
+        pmw_timeout_2000: pmw_timeout_2000 {
+            compatible = "zmk,behavior-pmw-timeout";
+            #binding-cells = <0>;
+            timeout-ms = <2000>;
+        };
+        
+        pmw_timeout_5000: pmw_timeout_5000 {
+            compatible = "zmk,behavior-pmw-timeout";
+            #binding-cells = <0>;
+            timeout-ms = <5000>;
+        };
+    };
+};
+
