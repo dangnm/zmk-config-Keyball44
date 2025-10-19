@@ -16,9 +16,13 @@ description: |
 
 compatible: "zmk,behavior-pmw3610-automouse-timeout"
 
-include: behavior_base.yaml
+include: base.yaml
 
 properties:
+  label:
+    type: string
+    description: Human-readable name for the behavior
+
   min-timeout-ms:
     type: int
     default: 100

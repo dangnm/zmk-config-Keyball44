@@ -127,16 +127,18 @@ For this behavior:
 - Binding name: `behavior-pmw3610-automouse-timeout`
 - File: `zmk,behavior-pmw3610-automouse-timeout.yaml`
 
-### Including Base Behavior
+### Including Base Binding
 
 ```yaml
-include: behavior_base.yaml
+include: base.yaml
 ```
 
-This line includes ZMK's base behavior binding, which provides:
-- Standard `label` property
-- Logging support
-- Device driver structure
+This line includes Zephyr's base device binding (`base.yaml` instead of `behavior_base.yaml`), which provides:
+- Standard device properties
+- Common device tree structure
+- Basic property validation
+
+Note: We use `base.yaml` (Zephyr's standard) rather than `behavior_base.yaml` (ZMK-specific) for better compatibility in user configs. The `label` property is explicitly defined in our binding.
 
 ## Validation
 
@@ -152,15 +154,59 @@ To verify the fix worked:
 - [ZMK Behaviors](https://zmk.dev/docs/behaviors)
 - [Example ZMK Binding](https://github.com/zmkfirmware/zmk/blob/main/app/dts/bindings/behaviors/zmk%2Cbehavior-key-press.yaml)
 
+## Common Binding Errors and Fixes
+
+### Error: "behavior_base.yaml not found"
+
+**Cause**: Trying to include ZMK-specific base binding that's not available in user configs.
+
+**Fix**: Use `base.yaml` (Zephyr's standard base binding) instead:
+```yaml
+include: base.yaml
+```
+
+And explicitly define needed properties like `label`:
+```yaml
+properties:
+  label:
+    type: string
+    description: Human-readable name for the behavior
+```
+
+### Error: "lacks binding"
+
+**Cause**: Missing YAML binding file entirely.
+
+**Fix**: Create the binding file at:
+```
+config/dts/bindings/behavior/<vendor>,<binding-name>.yaml
+```
+
+### Error: "unknown property"
+
+**Cause**: Using a property not defined in the binding.
+
+**Fix**: Add the property to the binding YAML:
+```yaml
+properties:
+  your-property-name:
+    type: int  # or string, boolean, etc.
+    description: What this property does
+```
+
 ## Status
 
 ✅ **FIXED** - Binding file created and integrated  
+✅ **FIXED** - Changed from `behavior_base.yaml` to `base.yaml`  
 ✅ **Build should now succeed**  
 ✅ **Documentation updated**
 
 ---
 
 **Date**: 2025-10-19  
-**Issue**: Missing devicetree binding definition  
-**Resolution**: Created YAML binding file
+**Issues Resolved**:
+1. Missing devicetree binding definition → Created YAML binding file
+2. `behavior_base.yaml` not found → Changed to `base.yaml`  
+
+**Final Status**: Ready to build ✅
 
