@@ -84,11 +84,11 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {type: held alternate}
+  - {t: '$$mdi:backspace$$', type: held alternate}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:apple-keyboard-option$$', type: held alternate}
   L2:
   - '0'
@@ -130,7 +130,7 @@ layers:
   - $$mdi:mouse-left-click-outline$$
   - $$mdi:mouse-right-click-outline$$
   - {type: held alternate}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:keyboard-space$$
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:keyboard-tab$$', h: MOUSE}
@@ -193,7 +193,7 @@ layers:
   - {t: '9', s: (}
   - {t: '0', s: )}
   - {t: L0, h: toggle}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:apple-keyboard-control$$
   - {t: L0, h: toggle, type: held}
   - {t: L0, h: toggle}
   - {t: L0, h: toggle}
@@ -207,22 +207,22 @@ layers:
   - {t: '''', h: L3, s: '"', type: held}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:minus-circle-outline$$', type: held}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:volume-low$$
-  - $$mdi:volume-high$$
+  - X
+  - C
+  - V
   - $$mdi:pan-down$$
   - PgDn
   - $$mdi:pan-up$$
   - $$mdi:pan-down$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: held}
+  - {t: ., type: held}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {type: held}
+  - {t: '$$mdi:backspace$$', type: held}
   - {t: '$$mdi:transfer$$', type: trans}
   - LEFT WIN
-  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:apple-keyboard-option$$
   - {type: held}
   - {t: '$$mdi:minus-circle-outline$$', type: held}
   SCROLL:
