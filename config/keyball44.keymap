@@ -117,7 +117,7 @@
         mouse_layer {
             label = "MOUSE";
             bindings = <
-&trans            &kp N1  &kp N2         &kp N3  &kp N4        &kp N5                             &kp N6         &kp N7        &kp N8          &kp N9     &kp N0           &to 0
+&trans            &kp N1  &kp N2         &kp N3  &kp N4        &kp N5                             &kp N6         &kp N7        &lt 5 NUMBER_5  &kp N9     &kp N0           &to 0
 &kp LEFT_CONTROL  &to 0   &to 0          &to 0   &to 0         &msc SCRL_UP                       &kp PAGE_UP    &mkp LCLK     &mkp MCLK       &mkp RCLK  &lt 5 SEMICOLON  &lt 3 SQT
 &trans            &none   &kp X          &kp C   &kp V         &msc SCRL_DOWN                     &kp PAGE_DOWN  &msc SCRL_UP  &msc SCRL_DOWN  &none      &kp PERIOD       &none
 &trans            &trans  &kp BACKSPACE  &trans  &kp LEFT_WIN                      &kp RIGHT_ALT  &trans                                                                   &none
