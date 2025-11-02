@@ -48,6 +48,27 @@
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        pmw_timeout_1000: pmw_timeout_1000 {
+            compatible = "zmk,behavior-pmw-timeout";
+            label = "PMW_TIMEOUT_1S";
+            #binding-cells = <0>;
+            timeout-ms = <1000>;
+        };
+
+        pmw_timeout_2000: pmw_timeout_2000 {
+            compatible = "zmk,behavior-pmw-timeout";
+            label = "PMW_TIMEOUT_2S";
+            #binding-cells = <0>;
+            timeout-ms = <2000>;
+        };
+
+        pmw_timeout_30000: pmw_timeout_30000 {
+            compatible = "zmk,behavior-pmw-timeout";
+            label = "PMW_TIMEOUT_30S";
+            #binding-cells = <0>;
+            timeout-ms = <30000>;
+        };
     };
 
     keymap {
@@ -56,20 +77,20 @@
         default_layer {
             label = "L0";
             bindings = <
-&kp ESCAPE      &kp Q     &kp W            &kp E      &kp R          &kp T                     &kp Y      &kp U  &kp I      &kp O    &kp P        &to 0
-&kp LCTRL       &lt 2 A   &kp S            &kp D      &kp F          &kp G                     &kp H      &kp J  &kp K      &kp L    &lt 2 SEMI   &lt 2 SQT
-&kp LEFT_SHIFT  &lt 1 Z   &kp X            &kp C      &kp V          &kp B                     &kp N      &kp M  &kp COMMA  &kp DOT  &lt 1 SLASH  &kp RIGHT_SHIFT
-&kp LGUI        &kp LALT  &lt 1 BACKSPACE  &kp SPACE  &kp RIGHT_WIN             &kp RIGHT_ALT  &kp ENTER                                          &lt 1 TAB
+&kp ESCAPE      &kp Q     &kp W          &kp E        &kp R             &kp T                     &kp Y        &kp U  &kp I      &kp O    &kp P        &to 0
+&kp LCTRL       &lt 2 A   &kp S          &kp D        &kp F             &kp G                     &kp H        &kp J  &kp K      &kp L    &lt 2 SEMI   &lt 2 SQT
+&kp LEFT_SHIFT  &lt 1 Z   &kp X          &kp C        &kp V             &kp B                     &kp N        &kp M  &kp COMMA  &kp DOT  &lt 1 SLASH  &kp RIGHT_SHIFT
+&kp LGUI        &kp LALT  &kp BACKSPACE  &lt 1 SPACE  &kp LEFT_COMMAND             &kp RIGHT_ALT  &lt 1 ENTER                                          &lt 1 TAB
             >;
         };
 
         symbols_nav_layer {
             label = "L1";
             bindings = <
-&trans          &kp EXCLAMATION  &kp AT      &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PIPE               &kp EQUAL      &kp PLUS       &kp MINUS     &kp UNDERSCORE     &kp ASTERISK  &none
-&trans          &kp HASH         &kp DOLLAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp GRAVE              &kp LEFT       &kp DOWN       &kp UP_ARROW  &kp RIGHT          &lt 2 COLON   &lt 2 SQT
-&kp LEFT_SHIFT  &kp PERCENT      &kp CARET   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp TILDE              &kp AMPERSAND  &kp BACKSLASH  &kp SQT       &kp DOUBLE_QUOTES  &trans        &trans
-&trans          &trans           &trans      &trans                &trans                                &trans  &trans                                                                       &kp RIGHT_ALT
+&kp TAB         &kp EXCLAMATION  &kp AT         &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PIPE               &kp EQUAL      &kp PLUS       &kp MINUS     &kp UNDERSCORE     &kp ASTERISK  &none
+&trans          &kp HASH         &kp DOLLAR     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp GRAVE              &kp LEFT       &kp DOWN       &kp UP_ARROW  &kp RIGHT          &lt 2 COLON   &lt 2 SQT
+&kp LEFT_SHIFT  &kp PERCENT      &kp CARET      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp TILDE              &kp AMPERSAND  &kp BACKSLASH  &kp SQT       &kp DOUBLE_QUOTES  &trans        &trans
+&trans          &trans           &kp BACKSPACE  &kp SPACE             &trans                                &trans  &kp ENTER                                                                    &kp RIGHT_ALT
             >;
         };
 
@@ -79,27 +100,27 @@
 &kp NUMBER_0        &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5              &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0  &none
 &lt 3 LEFT_CONTROL  &mt A F1      &kp F2        &kp F3        &kp F4        &kp F5                    &kp F6        &kp F7        &kp F8        &kp F9        &lt 2 F10     &lt 3 SQT
 &none               &kp LG(Z)     &kp LG(X)     &kp LG(C)     &kp LG(V)     &mkp MCLK                 &kp F11       &kp F12       &kp COMMA     &kp PERIOD    &kp SLASH     &kp CAPSLOCK
-&mkp LCLK           &mkp RCLK     &trans        &trans        &trans                          &trans  &lt 4 TAB                                                             &trans
+&mkp LCLK           &mkp RCLK     &trans        &kp SPACE     &trans                          &trans  &lt 4 TAB                                                             &trans
             >;
         };
 
         extended_layer {
             label = "L3";
             bindings = <
-&to 0  &kp EXCLAMATION  &kp AT_SIGN    &kp HASH       &kp DOLLAR    &bt BT_CLR                &kp CARET       &kp AMPERSAND  &kp ASTERISK      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none
-&to 1  &bt BT_DISC 0    &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_SEL 2  &trans                    &kp MINUS       &kp EQUAL      &kp LEFT_BRACKET  &kp RIGHT_BRACKET     &lt 2 SEMICOLON        &lt 3 SQT
-&to 2  &bt BT_SEL 0     &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4              &kp UNDERSCORE  &kp PLUS       &trans            &trans                &kp NON_US_BACKSLASH   &none
-&to 4  &trans           &kp DELETE     &trans         &trans                          &trans  &trans                                                                                        &trans
+&to 0  &kp EXCLAMATION  &kp AT_SIGN    &kp HASH       &kp DOLLAR    &bt BT_CLR                &kp CARET          &kp AMPERSAND      &kp ASTERISK        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none
+&to 1  &bt BT_DISC 0    &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_SEL 2  &trans                    &kp MINUS          &kp EQUAL          &kp LEFT_BRACKET    &kp RIGHT_BRACKET     &lt 2 SEMICOLON        &lt 3 SQT
+&to 2  &bt BT_SEL 0     &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4              &pmw_timeout_1000  &pmw_timeout_2000  &pmw_timeout_30000  &trans                &kp NON_US_BACKSLASH   &none
+&to 4  &trans           &kp DELETE     &trans         &trans                          &trans  &trans                                                                                                 &trans
             >;
         };
 
         mouse_layer {
             label = "MOUSE";
             bindings = <
-&trans  &kp N1          &kp N2          &kp N3        &kp N4           &kp N5              &kp N6         &kp N7        &kp N8          &kp N9     &kp N0           &to 0
-&trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT        &none               &kp PAGE_UP    &mkp LCLK     &mkp MCLK       &mkp RCLK  &lt 2 SEMICOLON  &lt 3 SQT
-&trans  &none           &none           &kp C_VOL_DN  &kp C_VOLUME_UP  &none               &kp PAGE_DOWN  &msc SCRL_UP  &msc SCRL_DOWN  &none      &none            &none
-&trans  &trans          &trans          &trans        &kp LEFT_WIN                 &trans  &trans                                                                   &none
+&trans            &kp N1  &kp N2         &kp N3  &kp N4        &kp N5                             &kp N6         &kp N7        &lt 5 NUMBER_8  &lt 5 NUMBER_9  &kp N0           &to 0
+&kp LEFT_CONTROL  &to 0   &to 0          &to 0   &to 0         &msc SCRL_UP                       &kp PAGE_UP    &mkp LCLK     &mkp MCLK       &mkp RCLK       &lt 5 SEMICOLON  &lt 3 SQT
+&trans            &none   &kp X          &kp C   &kp V         &msc SCRL_DOWN                     &kp PAGE_DOWN  &msc SCRL_UP  &msc SCRL_DOWN  &none           &kp PERIOD       &none
+&trans            &trans  &kp BACKSPACE  &trans  &kp LEFT_WIN                      &kp RIGHT_ALT  &trans                                                                        &none
             >;
         };
 
