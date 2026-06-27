@@ -1,0 +1,13 @@
+description: PMW3610 Auto Mouse Timeout Control Behavior
+compatible: "zmk,behavior-pmw-timeout"
+properties:
+  "#binding-cells":
+    type: int
+    const: 0
+  label:
+    type: string
+    description: Human readable label
+  timeout-ms:
+    type: int
+    required: true
+    description: timeout in milliseconds
