@@ -137,7 +137,7 @@ layers:
   - {type: held alternate}
   L3:
   - {t: L0, h: toggle}
-  - '!'
+  - {t: C, h: '$$mdi:apple-keyboard-command$$'}
   - '@'
   - '#'
   - $
